@@ -13,7 +13,6 @@ function App() {
     duration_minutes: ''
   });
   const [editingId, setEditingId] = useState(null);
-  const [editData, setEditData] = useState({});
 
   // Fetch all workouts
   useEffect(() => {
@@ -49,7 +48,6 @@ function App() {
   // Edit workout
   const handleEdit = (workout) => {
     setEditingId(workout._id);
-    setEditData(workout);
     setFormData({
       exercise_name: workout.exercise_name,
       sets: workout.sets,
@@ -119,7 +117,7 @@ function App() {
 
         {/* Workouts List */}
         <div className="workouts-list">
-          <h2>Your Workouts ({workouts.length})</h2>
+          <h2>Your Workouts <span>{workouts.length}</span></h2>
           {workouts.length === 0 ? (
             <p>No workouts yet. Add one above!</p>
           ) : (
