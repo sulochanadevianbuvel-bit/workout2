@@ -14,7 +14,6 @@ function App() {
   });
   const [editingId, setEditingId] = useState(null);
 
-  // Fetch all workouts
   useEffect(() => {
     fetchWorkouts();
   }, []);
@@ -28,7 +27,6 @@ function App() {
     }
   };
 
-  // Add new workout
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -45,7 +43,7 @@ function App() {
     }
   };
 
-  // Edit workout
+
   const handleEdit = (workout) => {
     setEditingId(workout._id);
     setFormData({
@@ -56,7 +54,6 @@ function App() {
     });
   };
 
-  // Delete workout
   const handleDelete = async (id) => {
     try {
       await axios.delete(`${API_BASE}/${id}`);
@@ -73,7 +70,7 @@ function App() {
       </header>
 
       <div className="container">
-        {/* Add/Edit Form */}
+        {/* Workout Form */}
         <form onSubmit={handleSubmit} className="workout-form">
           <h2>{editingId ? 'Edit Workout' : 'Add New Workout'}</h2>
           

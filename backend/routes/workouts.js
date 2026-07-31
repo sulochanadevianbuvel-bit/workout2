@@ -1,8 +1,7 @@
- const express = require('express');
+const express = require('express');
 const router = express.Router();
 const Workout = require('../models/Workout');
 
-// GET all workouts
 router.get('/', async (req, res) => {
   try {
     const workouts = await Workout.find().sort({ createdAt: -1 });
@@ -12,7 +11,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET single workout by ID
+
 router.get('/:id', async (req, res) => {
   try {
     const workout = await Workout.findById(req.params.id);
@@ -25,7 +24,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// POST new workout
+
 router.post('/', async (req, res) => {
   try {
     const workout = new Workout(req.body);
@@ -36,7 +35,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// UPDATE workout
+
 router.put('/:id', async (req, res) => {
   try {
     const workout = await Workout.findByIdAndUpdate(
@@ -53,7 +52,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE workout
+
 router.delete('/:id', async (req, res) => {
   try {
     const workout = await Workout.findByIdAndDelete(req.params.id);
